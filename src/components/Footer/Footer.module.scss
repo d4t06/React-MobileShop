@@ -1,0 +1,30 @@
+.footer {
+    margin-top: 20px;
+    padding: 20px 0 10px;
+    background-color: #ccc;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    justify-content: center;
+
+    .footer-item {
+        font-size: 1.6rem;
+
+        li {
+            margin-top: 10px;
+        }
+    }
+}
+
+.footer-bottom {
+    margin-top: 20px;
+
+    .copy-right {
+        color: #cd1818;
+        font-size: 2rem;
+        text-align: center;
+    }
+}

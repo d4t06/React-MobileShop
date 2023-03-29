@@ -1,0 +1,98 @@
+:root {
+   --header-nav-color: #cd1818;
+}
+.header-banner {
+   height: 44px;
+   background-color: rgb(110, 199, 212);
+   text-align: center;
+   img {
+      height: 100%;
+   }
+}
+.header-top {
+   height: 50px;
+   background-color: #333;
+}
+.header-top-wrap,
+.header-nav-wrap {
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   position: relative;
+   z-index: 100;
+}
+.brand {
+   font-size: 2.5rem;
+   color: #f1f1f1;
+}
+.user-cta {
+   // height: 50px;
+   display: flex;
+   align-items: center;
+}
+.image-frame {
+   // padding-top: 5px;
+   // display: inline-block;
+   margin-left: 5px;
+   width: 40px;
+   height: 40px;
+}
+.user-name {
+   color: #fff;
+   font-size: 1.6rem;
+   font-weight: 500;
+}
+.user-image {
+   width: 100%;
+   border-radius: 50%;
+   object-fit: contain;
+   object-position: center;
+}
+.header-nav {
+   height: 30px;
+   background: linear-gradient(to right, #6c0a0a, #cd1818, #6c0a0a);
+}
+.nav-list {
+   height: 100%;
+   display: flex;
+   gap: 20px;
+}
+.left-nav-list {
+   margin-left: auto;
+}
+.nav-item {
+   color: #fff;
+   font-size: 1.6rem;
+   // line-height: 30px;
+}
+.nav-item a {
+   height: 100%;
+   display: flex;
+   align-items: center;
+   font-weight: 500;
+   .nav-text {
+      margin-left: 5px;
+   }
+}
+.nav-item:hover {
+   color: #666;
+}
+// overlay
+// .overlay{
+//    position: relative;
+//    top: 0;
+//    right: 0;
+//    bottom: 0;
+//    left: 0;
+//    background-color: rgba($color: #000000, $alpha: 0.6);
+//    z-index: 5;
+//    transition: opacity linear .15s;
+//    pointer-events: none;
+//    opacity: 0;
+// }
+// .overlay.on {
+//    opacity: 1;
+//    pointer-events: unset;
+//    position: fixed;
+// }

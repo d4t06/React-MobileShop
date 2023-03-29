@@ -1,0 +1,36 @@
+.wrapper {
+   padding: 10px 30px;
+   font-size: 1.8rem;
+   min-width: 100px;
+   background-color: transparent;
+}
+
+.full {
+   width: 100%;
+}
+.half {
+   width: 50%;
+}
+.outline {
+   border:2px solid red;
+   &:hover {
+      background-color: #cd1818;
+      color: #fff;
+   }
+}
+.fill {
+   background-color: #cd1818;
+   color: #fff;
+   &:hover {
+      background-color: #8b1616;
+   }
+}
+.rounded {
+   border-radius: 6px;
+}
+.disable {
+   opacity: .6;
+   pointer-events: none;
+   color: #fff;
+   background-color: #cd1818;
+}

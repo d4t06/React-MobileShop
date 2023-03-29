@@ -1,0 +1,107 @@
+body {
+   // background-color: #333;
+}
+.login-form {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 40%;
+   gap: 20px;
+   border-radius: 5px;
+   margin: 40px auto 0;
+   padding: 20px 30px 15px;
+   font-weight: 500;
+   background-color: #fff;
+   box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.15);
+}
+.login-form .form-group {
+   width: 100%;
+}
+.form-group {
+   input {
+      border: 2px solid #333;
+      border-radius: 5px;
+      width: 100%;
+      padding: 6px;
+      outline: none;
+      font-size: 1.8rem;
+   }
+   label {
+      font-size: 2rem;
+      display: inline-flex;
+      margin-bottom: 5px;
+   }
+}
+.persist-check {
+   font-size: 1.6rem;
+   display: flex;
+   align-self: flex-start;
+   input {
+      margin:0 5px;
+      -ms-transform: scale(1.4); /* IE */
+      -moz-transform: scale(1.4); /* FF */
+      -webkit-transform: scale(1.4); /* Safari and Chrome */
+      -o-transform: scale(1.4); /* Opera */
+      transform: scale(1.4);
+   }
+}
+.login-form-btn {
+   width: 50%;
+   border: none;
+   border-radius: 5px;
+   font-size: 1.8rem;
+   padding: 8px 0px;
+   background-color: #cd1818;
+   color: #fff;
+   cursor: pointer;
+   &:hover {
+      background-color: #b21616;
+
+   }
+}
+
+.messgae-container {
+   font-size: 1.6rem;
+   color: red;
+}
+.login-with {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.login-option {
+   border-radius: 4px;
+   font-size: 1.6rem;
+   padding: 5px 10px;
+   background-color: #ccc;
+}
+.login-option + .login-option {
+   margin-left: 15px;
+}
+.register-text {
+   font-size: 1.8rem;
+   a {
+      color: #cd1818;
+      &:hover {
+         // color: #fff;
+         text-decoration: underline;
+      }
+   }
+}
+
+.instruction {
+   background-color: #333;
+   color: #fff;
+   font-size: 1.5rem;
+   padding: 5px;
+   margin-top: 5px;
+   border-radius: 6px;
+}
+.error-msg {
+   width: 100%;
+   text-align: center;
+   border-radius: 4px;
+   padding: 5px 0;
+   color: rgb(196, 22, 22);
+   background-color: rgba($color: #cd1818, $alpha: .3);
+}
