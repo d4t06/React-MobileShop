@@ -1,75 +1,81 @@
 import { useEffect, useState } from 'react';
-import useFilter from '../../hooks/useFilters';
+// import useFilter from '../../hooks/useFilters';
 import { fetchProducts } from '../../store/productsSlice';
 
 import classNames from 'classnames/bind';
 import styles from './BrandSort.module.scss';
 
-import DemandItem from './demandItem';
+import BrandList from './BrandList';
 import SelectedSort from './SelectedSort';
-import { brand, demand } from '../../assets/data/brands';
+import { brand } from '../../assets/data/brands';
 
-import { getAll } from '../../store/actions';
+// import { getAll } from '../../store/actions';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { selectedAllStore } from '../../store/productsSlice';
+import { selectedAllFilter } from '../../store/filtersSlice';
+
+import {storingFilters} from '../../store/filtersSlice'
+
 
 const cx = classNames.bind(styles);
 
 function QuickFilter({ category, count }) {
    // const [state, dispatch] = useStore();
    const store = useSelector(selectedAllStore)
+   const filtersStore = useSelector(selectedAllFilter)
    const dispatchRedux = useDispatch()
-   // const [Filters, setFilters] = useState('');
-   const [filters, handleFilter] = useFilter();
+   const [Filters, setFilters] = useState('');
+   // const [filters, handleFilter] = useFilter();
 
    // console.log("quick filter = ", filters)
 
    const isFiltered =
-   (JSON.stringify(filters) !== '{}' && filters?.brand) ||
-   filters?.price;
+   (JSON.stringify(Filters) !== '{}' && Filters?.brand) ||
+   Filters?.price;
 
 
    const showFilteredResults = (filters) => {
       const { page, sort, category } = store;
       // if (status === 'idle') {
       //    console.log('show filter result');
-         getAll(dispatchRedux, { page, sort, category, filters: filters });
-         // dispatchRedux(fetchProducts({page, sort, category, filters: filters}))
+         // getAll(dispatchRedux, { page, sort, category, filters: Filters });
+         dispatchRedux(fetchProducts({page, sort, category, filters: filters}))
+         dispatchRedux(storingFilters({sort, filters: filters}))
       // }
    };
 
-   // const handleFilter = (filters, by) => {
-   //    let newFilters = { ...Filters };
-   //    // console.log("old product filters = ", newFilters)
-   //    // console.log('product filter = ', filters, by);
+   const handleFilter = (filters, by) => {
+      let newFilters = { ...Filters };
+      // console.log("old product filters = ", newFilters)
+      // console.log('product filter = ', filters, by);
 
-   //    // nếu chọn tất cả
-   //    if (!filters) {
-   //       delete newFilters[by];
-   //    } else {
-   //       newFilters[by] = filters;
-   //    }
+      // nếu chọn tất cả
+      if (!filters) {
+         delete newFilters[by];
+      } else {
+         newFilters[by] = filters;
+      }
 
-   //    // nếu không có filter gì cả
-   //    if (!newFilters.price && !newFilters.brand) newFilters = '';
+      // nếu không có filter gì cả
+      if (!newFilters.price && !newFilters.brand) newFilters = '';
 
-   //    // console.log("new product filters = ", newFilters)
-   //    showFilteredResults(newFilters);
-   //    setFilters(newFilters);
-   // };
+      // console.log("new product filters = ", newFilters)
+      showFilteredResults(newFilters);
+      setFilters(newFilters);
+   };
 
    // // khong can update o day
-   //  useEffect(() => {
-   //   // if (!Filters) return
-   // //   console.log("useEffect update productfilter global");
-   //   setFilters(store.filters)
-   //  }, [store])
+    useEffect(() => {
+     // if (!Filters) return
+   //   console.log("useEffect update productfilter global");
+     setFilters(filtersStore.filters)
+    }, [filtersStore])
 
-   useEffect(() => {
-      console.log('show filter result');
-      showFilteredResults(filters)
-   },[filters])
+   // useEffect(() => {
+   //    console.log('show filter result');
+   //    showFilteredResults(filters)
+   // },[filters])
 
 
    // useEffect(() => {
@@ -101,11 +107,11 @@ function QuickFilter({ category, count }) {
                {isFiltered ? (
                   <SelectedSort
                      category={category}
-                     data={filters}
+                     data={Filters}
                      handleFilter={(filter, by) => handleFilter(filter, by)}
                   />
                ) : (
-                  <DemandItem
+                  <BrandList
                      category={category}
                      data={brand[category]}
                      handleFilter={(filter, by) => handleFilter(filter, by)}

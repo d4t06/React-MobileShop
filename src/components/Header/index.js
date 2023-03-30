@@ -18,8 +18,8 @@ function Header() {
       ? jwtDecode(auth.token)
       : undefined
 
-   console.log("header decode =", decode);
-   console.log("header re-render");
+   // console.log("header decode =", decode);
+   // console.log("header re-render");
 
 
    return (

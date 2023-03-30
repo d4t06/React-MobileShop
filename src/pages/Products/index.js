@@ -17,6 +17,7 @@ import { banner } from '../../assets/data';
 import { fetchProducts, selectedAllStore, storeProduct } from '../../store/productsSlice';
 import NoProduct from './NoProduct';
 import Skeleton from './Skeleton';
+import ProductSort from '../../components/ProductSort';
 const cx = classNames.bind(styles);
 
 function Product() {
@@ -30,7 +31,7 @@ function Product() {
    const { products, page, ...rest } = store;
    const { rows, count } = products ? products : [];
 
-   let countProduct = count - page * import.meta.env.VITE_PAGE_SIZE;
+   let countProduct = count - page * import.meta.env.PAGE_SIZE || 8;
    if (countProduct < 0) countProduct = 0;
 
    useEffect(() => {
@@ -51,14 +52,17 @@ function Product() {
       //    return;
       // };
       // fetch();
-      if (store.status === 'idle') {
+      // if (store.status === 'idle') {
          dispatchRedux(fetchProducts({category, page: 1}))
-      }
+      // }
    }, [category]);
 
    const handleGetMore = () => {
       // const { data, status, ...rest } = state;
       getAll(dispatchRedux, { ...rest, category: category, page: page + 1 });
+      // dispatchRedux(fetchProducts({...rest, page: page + 1}))
+
+
    };
 
    console.log('product re-render', store);
@@ -71,9 +75,11 @@ function Product() {
             <div className="col col-9">
                <QuickFilter category={category} count={count} />
 
-               {store.status === 'loading' && <Skeleton data={rows}/>}
+               {/* {store.status === 'loading' && <Skeleton data={rows}/>} */}
+               <ProductSort category={category}/>
+               {store.status === 'loading' && <h1>Loading...</h1>}
 
-               {count !== 0 && store.status === 'successful' ? (
+               {count !== 0 && store.status === 'successful' && (
                   <>
                      <ProductItem data={rows} category={category} />
                      <div className={cx('pagination')}>
@@ -88,7 +94,9 @@ function Product() {
                         </Button>
                      </div>
                   </>
-               ) : <NoProduct />}
+               )}
+
+               {!count && <NoProduct/>}
             </div>
 
             <ProductFilter category={category} />

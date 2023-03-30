@@ -21,7 +21,7 @@ const getAll = async (dispatch, query) => {
    }
 };
 
-const getSearchPage = async (dispatch, query) => {
+const getAllSearchPage = async (dispatch, query) => {
 
    // console.log("getSearchPage query = ", query);
 
@@ -37,4 +37,4 @@ const getSearchPage = async (dispatch, query) => {
    }
 };
 
-export { getAll, getSearchPage };
+export { getAll, getAllSearchPage };

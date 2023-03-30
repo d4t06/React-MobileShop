@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as productServices from '../services/productServices'
+import searchService from "../services/searchService";
 
 const initialState = {
     status: 'idle',
@@ -10,7 +11,15 @@ const initialState = {
 
 export const fetchProducts = createAsyncThunk('/products', async(query) => {
     try {
-        const response = await productServices.getProducts(query);
+        let response;
+        if (query.category.includes("search")) {
+            console.log('include search')
+            const key = query.category.split('search=')[1]; //search=iphone 14
+             response = await searchService({ q: key, page: query.page, sort: query.sort });
+        }
+        else {
+             response = await productServices.getProducts(query);
+        }
         // setTimeout(() => {
         // }, 500);
         return {products: response, ...query};
@@ -18,6 +27,15 @@ export const fetchProducts = createAsyncThunk('/products', async(query) => {
         console.log("fetchProducts error", error)
     }
 })
+
+// export const fetchProductsSearchPage = createAsyncThunk('/products', async(query) => {
+//     try {
+        
+//         return {products: response, ...query};
+//     } catch (error) {
+//         console.log("fetchProducts error", error)
+//     }
+// })
 
 const productsSlice = createSlice({
     name: "products",
@@ -34,6 +52,7 @@ const productsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            // fetchProducts
             .addCase(fetchProducts.pending, (state, action) => {
                 state.status = 'loading'
             }) 
@@ -42,12 +61,25 @@ const productsSlice = createSlice({
                     state.status = 'successful'    
                     state.page= action.payload.page || 1;
                     state.products = action.payload.products || {};
-                    state.category= action.payload.category || '';                
-            
+                    state.category= action.payload.category || '';            
             })
             .addCase(fetchProducts.rejected, (state, action) => {
                 state.status = 'error'
             })
+
+            // // fetchProductsSearchPage
+            // .addCase(fetchProductsSearchPage.pending, (state, action) => {
+            //     state.status = 'loading'
+            // })
+            // .addCase(fetchProductsSearchPage.fulfilled, (state, action) => {
+            //         state.status = 'successful'    
+            //         state.page= action.payload.page || 1;
+            //         state.products = action.payload.products || {};
+            //         state.category= action.payload.category || '';    
+            // })
+            // .addCase(fetchProductsSearchPage.rejected, (state, action) => {
+            //     state.status = 'error'
+            // })
     }
 })
 

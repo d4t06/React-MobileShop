@@ -9,7 +9,7 @@ const filtersSlice = createSlice({
     name: "filters",
     initialState,
     reducers: {
-        storeFilters(state, action) {
+        storingFilters(state, action) {
             state.filters= action.payload.filters || '';
             state.sort= action.payload.sort || '';
         }
@@ -19,6 +19,6 @@ const filtersSlice = createSlice({
 
 export const selectedAllFilter = (state) => state.filters
 
-export const { storeFilters } = filtersSlice.actions
+export const { storingFilters } = filtersSlice.actions
 
 export default filtersSlice.reducer

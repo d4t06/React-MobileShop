@@ -11,7 +11,7 @@ function ProductItem({ data: products, searchResultPage, category }) {
 
    return (
       <div className={cx('product-container')}>
-         <ProductSort category={category} />
+         {/* <ProductSort category={category} /> */}
          <div className="row">
             {products ? (
                products.map((item, index) => {

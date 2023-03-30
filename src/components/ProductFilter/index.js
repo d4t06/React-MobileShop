@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchProducts } from '../../store/productsSlice';
-import { selectedAllFilter, storeFilters } from '../../store/filtersSlice';
-import useFilter from '../../hooks/useFilters';
+import { selectedAllFilter, storingFilters } from '../../store/filtersSlice';
+// import useFilter from '../../hooks/useFilters';
 
 import classNames from 'classnames/bind';
 import styles from './ProductFilter.module.scss';
@@ -12,8 +12,8 @@ import Checkbox from './sections/Checkbox';
 import Radiobox from './sections/Radiobox';
 
 import { brand, price } from '../../assets/data';
-import { getAll } from '../../store/actions';
-import { useParams } from 'react-router-dom';
+// import { getAll } from '../../store/actions';
+// import { useParams } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -31,7 +31,7 @@ function ProductFilter({ category }) {
       // getAll(dispatchRedux, { page: 1, sort, category, filters: filters });
       dispatchRedux(fetchProducts({page: 1, sort, category, filters: filters}))
       
-      dispatchRedux(storeFilters({sort, filters: filters}))
+      dispatchRedux(storingFilters({sort, filters: filters}))
    };
 
    // useEffect(() => {

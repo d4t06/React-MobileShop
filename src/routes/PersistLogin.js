@@ -33,10 +33,10 @@ const PersistLogin = () => {
       return () => isMounted= false;
    }, []);
 
-   useEffect(() => {
-      console.log(`isLoading = ${isLoading}`);
-      console.log('auth =', auth);
-   }, [isLoading]);
+   // useEffect(() => {
+   //    console.log(`isLoading = ${isLoading}`);
+   //    console.log('auth =', auth);
+   // }, [isLoading]);
 
 
    // console.log("persist login");

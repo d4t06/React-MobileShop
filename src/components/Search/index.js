@@ -82,7 +82,6 @@ function Search({setShowModal}) {
       handleShow(false);
 
       // if (searchResult.rows?.length) {
-
       //    console.log('has result');
       //    dispatch({
       //       type: 'GET_ALL',
@@ -94,8 +93,6 @@ function Search({setShowModal}) {
       // } 
       navigate(`/search/${query}`);
    };
-
-   // console.log('search re render');
    return (
       <Popup
          content={
@@ -111,7 +108,7 @@ function Search({setShowModal}) {
                               <Link
                                  to={`/${item.category}/${item.href}`}
                                  className={cy('product-item')}
-                                 key={item.id}
+                                 key={item.href}
                                  onClick={() => {
                                     handleDetailPage({
                                        href: item.href,
