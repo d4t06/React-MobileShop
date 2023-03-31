@@ -119,3 +119,9 @@
 ### update thứ 5 30/3/2023
 - Dùng createAsyncThunk thay cho action
 - Dùng biến môi trường vite import.meta.env.tên bến
+
+### update thứ 6 31/3/2023
+- Fix logic trang Products
+- Fix imageSlider
+- Thêm file config
+- Sửa logic getMoreProducts thành push mảng vào

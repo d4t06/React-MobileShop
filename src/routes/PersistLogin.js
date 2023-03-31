@@ -12,8 +12,6 @@ const PersistLogin = () => {
    const [isLoading, setIsLoading] = useState(true);
    const [persist] = useLocalStorage('persist', false) //[persist, setPersist]
 
-   // console.log("persist login");
-
    
    useEffect(() => {
       let isMounted = true;
@@ -28,7 +26,7 @@ const PersistLogin = () => {
          }
       };
 
-      !auth.token ? verifyRefreshToken() : setIsLoading(false);
+      !auth.token && persist ? verifyRefreshToken() : setIsLoading(false);
 
       return () => isMounted= false;
    }, []);
@@ -38,14 +36,13 @@ const PersistLogin = () => {
    //    console.log('auth =', auth);
    // }, [isLoading]);
 
-
    // console.log("persist login");
    return (
       <>
          {!persist 
             ? <Outlet />
             : isLoading 
-               ? <h1>Loading...</h1> 
+               ? ''
                : <Outlet />}
       </>
    );

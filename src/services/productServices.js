@@ -21,16 +21,13 @@ export const getProducts = async (querys) => {
          }
       })
       return response.data
-      // return []
    } catch (error) {
       console.log("loi getProducts services", error);
-      return []
    }
 };
 export const getProductDetail = async (querys) => {
    if (!querys) {
       console.log("product service missing query");
-      return []
    }
    const {category, href} = querys
    try {
@@ -58,6 +55,4 @@ export const buyProduct = async (data) => {
    } catch (error) {
       console.log('buy product fail, ', error)
    }
-
-
 }

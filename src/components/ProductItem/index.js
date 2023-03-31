@@ -1,72 +1,51 @@
-import { Link } from 'react-router-dom';
-import classNames from 'classnames/bind';
-import styles from './ProductItem.module.scss';
-import moneyFormat from '../../utils/moneyFormat.js';
-import ProductSort from '../ProductSort';
+import { Link } from "react-router-dom";
+import classNames from "classnames/bind";
+import styles from "./ProductItem.module.scss";
+import moneyFormat from "../../utils/moneyFormat.js";
+// import ProductSort from "../ProductSort";
 
 const cx = classNames.bind(styles);
-function ProductItem({ data: products, searchResultPage, category }) {
+function ProductItem({ data, searchResultPage }) {
+  // console.log("products = ", products)
 
-   // console.log("products = ", products)
+  const feature = data?.feature.slice(0, data.feature.length - 5).split("*and*");
 
-   return (
-      <div className={cx('product-container')}>
-         {/* <ProductSort category={category} /> */}
-         <div className="row">
-            {products ? (
-               products.map((item, index) => {
-                  const feature = item.feature
-                     .slice(0, item.feature.length - 5)
-                     .split('*and*');
-                  return (
-                     <div
-                        key={index}
-                        className={cx(
-                           'col',
-                           searchResultPage ? 'col-3' : 'col-4'
-                        )}
-                     >
-                        <div className={cx('product-item')}>
-                           <Link
-                              to={`/${item.category}/${item.href}`}
-                              className={cx('product-item-frame')}
-                           >
-                              <img
-                                 className={cx('product-item-image')}
-                                 src={item.image}
-                              />
-                              {!!item.product_label && (
-                                 <img
-                                    className={cx('product-item-label')}
-                                    src={item.product_label}
-                                 />
-                              )}
-                           </Link>
-                           <div className={cx('product-item-event')}>
-                              {item.label && (
-                                 <span className={cx('event-label')}>
-                                    {item.label}
-                                 </span>
-                              )}
-                           </div>
-                           {item.intallment && (
-                              <div className={cx('product-item-installment')}>
-                                 <span>Trả góp 0%</span>
-                              </div>
-                           )}
-                           <div className={cx('product-item-body')}>
-                              <h4 className={cx('product-item_name')}>
-                                 {item.name}
-                              </h4>
+  return (
+        <div className={cx("col", searchResultPage ? "col-3" : "col-4")}>
+          <div className={cx("product-item")}>
+            <Link
+              to={`/${data.category}/${data.href}`}
+              className={cx("product-item-frame")}
+            >
+              <img className={cx("product-item-image")} src={data.image} />
+              {!!data.product_label && (
+                <img
+                  className={cx("product-item-label")}
+                  src={data.product_label}
+                />
+              )}
+            </Link>
+            <div className={cx("product-item-event")}>
+              {data.label && (
+                <span className={cx("event-label")}>{data.label}</span>
+              )}
+            </div>
+            {data.intallment && (
+              <div className={cx("product-item-installment")}>
+                <span>Trả góp 0%</span>
+              </div>
+            )}
+            <div className={cx("product-item-body")}>
+              <h4 className={cx("product-item_name")}>{data.name}</h4>
 
-                              <div className={cx('product-item_tags')}>
-                                 {feature.map((tag, index) => (
-                                    <p key={index} className={cx('tag')}>
-                                       {tag}
-                                    </p>
-                                 ))}
-                              </div>
-                              {/* {item.category === 'dtdd' && (
+              <div className={cx("product-item_tags")}>
+                {feature?.map((tag, index) => (
+                  <p key={index} className={cx("tag")}>
+                    {tag}
+                  </p>
+                ))}
+              </div>
+              {/* {data.category === 'dtdd' && (
                                  <div className={cx('product-item-memory')}>
                                     <button
                                        className={cx('memory-item', 'active')}
@@ -78,50 +57,34 @@ function ProductItem({ data: products, searchResultPage, category }) {
                                     </button>
                                  </div>
                               )} */}
-                              {/* <div className={cx('gift')}>
-                                 {!!item.gift && <span>{item.gift}</span>}
+              {/* <div className={cx('gift')}>
+                                 {!!data.gift && <span>{data.gift}</span>}
                               </div> */}
-                              <div className={cx('product-item_price')}>
-                                 <div className={cx('price-top')}>
-                                    <span
-                                       className={cx('product-item_price--old')}
-                                    >
-                                       {item.old_price &&
-                                          moneyFormat(item.old_price)}
-                                    </span>
-                                    {item.old_price && (
-                                       <span className={cx('discount-percent')}>
-                                          -
-                                          {(
-                                             ((item.old_price -
-                                                item.cur_price) /
-                                                item.old_price) *
-                                             100
-                                          ).toFixed(0)}
-                                          %
-                                       </span>
-                                    )}
-                                 </div>
+              <div className={cx("product-item_price")}>
+                <div className={cx("price-top")}>
+                  <span className={cx("product-item_price--old")}>
+                    {data.old_price && moneyFormat(data.old_price)}
+                  </span>
+                  {data.old_price && (
+                    <span className={cx("discount-percent")}>
+                      -
+                      {(
+                        ((data.old_price - data.cur_price) / data.old_price) *
+                        100
+                      ).toFixed(0)}
+                      %
+                    </span>
+                  )}
+                </div>
 
-                                 <h1
-                                    className={cx(
-                                       'product-item_price--current'
-                                    )}
-                                 >
-                                    {moneyFormat(item.cur_price)}
-                                 </h1>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  );
-               })
-            ) : (
-               <h1 className='col-full' style={{marginTop:"30px", textAlign: "center"}}>Không tìm thấy !!!</h1>
-            )}
-         </div>
-      </div>
-   );
+                <h1 className={cx("product-item_price--current")}>
+                  {moneyFormat(data.cur_price)}
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+  );
 }
 
 export default ProductItem;
