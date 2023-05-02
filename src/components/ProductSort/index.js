@@ -36,7 +36,7 @@ const continents = [
    },
 ];
 
-function ProductSort({ category }) {
+function ProductSort({ category, disable }) {
    const filtersStore = useSelector(selectedAllFilter);
    const dispatchRedux = useDispatch();
    const [checked, setChecked] = useState(1);
@@ -49,7 +49,6 @@ function ProductSort({ category }) {
    }, [category]);
 
    const handleSort = (id) => {
-      // console.log("sort state ", state)
       if (id) {
          let newSort = {
             column: continents[id - 1].column,
@@ -64,19 +63,6 @@ function ProductSort({ category }) {
          );
          dispatchRedux(storingFilters({ filters, sort: newSort }));
 
-         // nếu sort ở search page
-         // if (category.includes('search')) {
-         //    // getSearchPage(dispatchRedux, { category, page: 1, sort: newSort });
-
-         //    dispatchRedux(storingFilters({ filters, sort: newSort }));
-         //    dispatchRedux(fetchProductsSearchPage({ category, page: 1, sort: newSort }));
-         // } else {
-         //    dispatchRedux(
-         //       fetchProducts({ page: 1, category, filters, sort: newSort })
-         //    );
-         //    dispatchRedux(storingFilters({ filters, sort: newSort }));
-         // }
-
          setChecked(id);
       }
    };
@@ -90,7 +76,7 @@ function ProductSort({ category }) {
    };
 
    return (
-      <div className={cx('product-sort')}>
+      <div className={cx('product-sort', {disable})}>
          <h1>Xem theo</h1>
          <ul className={cx('btn-group')}>
             {continents.map((item, index) => {

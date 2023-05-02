@@ -1,13 +1,13 @@
 import * as productServices from '../services/productServices';
 import searchService from '../services/searchService';
 
-import { storeProduct } from './productsSlice';
+import { storingProducts } from './productsSlice';
 
 const getAll = async (dispatch, query) => {
    try {
       const response = await productServices.getProducts(query);
       if (response) {
-         dispatch(storeProduct({
+         dispatch(storingProducts({
             products: response,
             ...query,
          }));
@@ -28,7 +28,7 @@ const getAllSearchPage = async (dispatch, query) => {
    try {
       const key = query.category.split('search=')[1]; //search=iphone 14
       const response = await searchService({ q: key, page: query.page, sort: query.sort });
-      dispatch(storeProduct({
+      dispatch(storingProducts({
          products: response,
          ...query,
       }));

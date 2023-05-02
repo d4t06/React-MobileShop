@@ -35,7 +35,6 @@
     color: #333;
  }
  .search-btn:hover {
-    // background-color: #d1d1d1;
     color: #333;
  }
  .clear-btn, .loading-btn {
@@ -43,12 +42,12 @@
     height: 100%;
     right: 60px;
     background-color: transparent;
-    top: 0;
+    top: 3px;
     color: #ccc;
     font-size: 1.8rem;
  }
  .loading-btn{
-    animation: spinner 1s linear infinite;
+    animation: spinner 2s linear infinite;
  }
 
  @keyframes spinner {
@@ -56,6 +55,6 @@
         transform: rotate(0);
     }
     to {
-        transform: rotate(360deg);
+        transform: rotate(-360deg);
     }
  }

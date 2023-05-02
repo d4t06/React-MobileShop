@@ -17,7 +17,7 @@ import { brand, price } from '../../assets/data';
 
 const cx = classNames.bind(styles);
 
-function ProductFilter({ category }) {
+function ProductFilter({ category, disable }) {
    const filtersStore = useSelector(selectedAllFilter);
    const dispatchRedux = useDispatch();
    const [Filters, setFilters] =  useState('');
@@ -73,7 +73,7 @@ function ProductFilter({ category }) {
 
    return (
       <div className={cx('col', 'col-3')}>
-         <div className={cx('product-filter')}>
+         <div className={cx('product-filter', {disable})}>
             <div className={cx('filter-section')}>
                <h1 className={cx('filter-title')}>Hãng sản xuất</h1>
                <div className={cx('filter-list')}>

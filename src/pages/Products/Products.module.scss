@@ -32,3 +32,15 @@
         }
     }
 }
+.loading-btn{
+    animation: spinner 2s linear infinite;
+ }
+
+ @keyframes spinner {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+ }

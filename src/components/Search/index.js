@@ -172,7 +172,7 @@ function Search({setShowModal}) {
                />
                {loading && query && (
                   <button className={cx('loading-btn')}>
-                     {/* <FontAwesomeIcon icon={faSpinner} /> */}
+                     <i className='material-icons'>sync</i>
                   </button>
                )}
                {!loading && query && (
@@ -180,10 +180,12 @@ function Search({setShowModal}) {
                      className={cx('clear-btn')}
                      onClick={(e) => handleClear(e)}
                   >
-                     {/* <FontAwesomeIcon icon={faCircleXmark} /> */}
+                     <i className='material-icons'>clear</i>
                   </button>
                )}
                <button onClick={(e) => handleSubmit(e)} className={cx('search-btn')}>
+                  <i className='material-icons'>search</i>
+
                   {/* <FontAwesomeIcon icon={faSearch} /> */}
                </button>
             </form>

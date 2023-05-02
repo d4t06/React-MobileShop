@@ -36,7 +36,7 @@ function ImageSlider({ banner, data }) {
     const id = setInterval(() => {
       // console.log('useEffect auto slide');
       nextImage();
-    }, 4000);
+    }, 10000);
 
     return () => clearInterval(id);
   }, [isEnter]);

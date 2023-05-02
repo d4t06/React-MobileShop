@@ -59,6 +59,9 @@ li {
 .mt-15 {
    margin-top: 15px;
 }
+.mt-10 {
+   margin-top: 10px;
+}
 .row {
    display: flex;
    flex-wrap: wrap;
@@ -112,4 +115,20 @@ li {
 .col-10 {
    max-width: 83.3333%;
    flex: 0 0 83.3333%;
+}
+.df {
+   display: flex;
+}
+.atc {
+   align-items: center;
+}
+.tac {
+   text-align: center;
+}
+.mgauto {
+   margin: 0 auto;
+}
+.disable {
+   opacity: .6;
+   pointer-events: none;
 }
