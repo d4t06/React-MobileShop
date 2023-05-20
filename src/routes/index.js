@@ -6,6 +6,8 @@ import Login from "../pages/Login";
 import Register from '../pages/Register'
 import Unauthorized from '../pages/UnauthorizedPage';
 import AdminPage from '../pages/AdminPage';
+import DashboardLayout from '../layouts/DashboardLayout';
+import AddProduct from '../pages/AddProduct';
 
 const publicRoutes = [
    {
@@ -36,8 +38,21 @@ const publicRoutes = [
       path: "/:category/:key",
       component: DetailPage,
    },
-   
-
+   {
+      path:"/dashboard",
+      component: AdminPage,
+      layout: DashboardLayout
+   },
+   {
+      path:"/dashboard/add",
+      component: AddProduct,
+      layout: DashboardLayout
+   },
+   {
+      path:"/dashboard/:category",
+      component: AdminPage,
+      layout: DashboardLayout
+   }
 ];
 
 
@@ -46,11 +61,6 @@ const privateRoutes = [
       path:'/account',
       role: ["R1", "R2", "R3"],
       component: <h1>Account Page</h1>
-   },
-   {
-      path:'/admin',
-      role: ["R1"],
-      component: AdminPage
    },
    {
       path:'/create',

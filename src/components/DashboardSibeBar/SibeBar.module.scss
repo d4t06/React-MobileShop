@@ -1,0 +1,23 @@
+.sibebar {
+    width: 200px;
+    position: fixed;
+    left: 0;
+    top: 50px;
+    bottom: 0;
+    background-color: #444;
+    color: #fff;
+    &__item {
+       display: flex;
+       align-items: center;
+       padding: 10px;
+       font-size: 1.8rem;
+       font-weight: bold;
+       cursor: pointer;
+       &:hover {
+          color: #961212;
+       }
+       i {
+          margin-right: 5px;
+       }
+    }
+ }

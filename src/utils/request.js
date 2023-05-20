@@ -5,24 +5,24 @@ const request = axios.create({
    withCredentials: true,
 });
 
-export const get = async (path, option) => {
-   try {
-      const res = await request.get(path, option);
-      return res.data;
+// export const get = async (path, option) => {
+//    try {
+//       const res = await request.get(path, option);
+//       return res.data;
 
-   } catch (error) {
-      console.log(error)
-   } 
-};
+//    } catch (error) {
+//       console.log(error)
+//    } 
+// };
 
-export const post = async (path, body, header) => {
-   try {
-      const res = await request.post(path, body, header);
-      return res.data;
+// export const post = async (path, body, header) => {
+//    try {
+//       const res = await request.post(path, body, header);
+//       return res.data;
 
-   } catch (error) {
-      console.log(error);
-   }
-};
+//    } catch (error) {
+//       console.log(error);
+//    }
+// };
 
 export default request;

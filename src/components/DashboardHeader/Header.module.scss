@@ -1,0 +1,14 @@
+.header__wrapper {
+    background: linear-gradient(to right, #6c0a0a, #cd1818, #6c0a0a);
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 50px;
+    }
+}

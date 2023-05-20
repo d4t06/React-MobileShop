@@ -11,7 +11,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route element={<PersistLogin />}>
           {publicRoutes.map((route, index) => {
             const Page = route.component;
             let Layout = DefaultLayout;
@@ -32,6 +31,7 @@ function App() {
           })}
 
           {/* protected route */}
+        <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRole={["R1", "R2", "R3"]} />}>
             <Route
               path="/account"
@@ -64,6 +64,7 @@ function App() {
               }
             />
           </Route>
+
         </Route>
       </Routes>
     </Router>
